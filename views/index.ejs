@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta charset="utf-8" />
+		<title>Profil | <%=Data.username%></title>
+
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+		<%- include('layout/css.ejs') %>
+	</head>
+
+	<body class="no-skin">
+		<%- include('layout/navbar') %>
+
+		<div class="main-container ace-save-state" id="main-container">
+			<%- include('layout/sidebar') %>
+
+			<div class="main-content">
+				<div class="main-content-inner">
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li class="active">
+								<i class="ace-icon fa fa-home home-icon"></i>
+								Dashboard
+							</li>
+						</ul><!-- /.breadcrumb -->
+					</div>
+
+					<div class="page-content">
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+
+								<div class="row">
+									<div class="col-xs-12 col-sm-3 center">
+										<% if(typeof msg_err!='undefined') { %>
+											<div class="alert alert-danger">
+												<strong>
+													<i class="ace-icon fa fa-times"></i>
+													Oops!
+												</strong>
+												<%= msg_err %>
+												<br />
+											</div>
+										<% } %>
+										<span class="profile-picture">
+											<img class="editable img-responsive" alt="<%=Data.nama.depan%> <%=Data.nama.belakang%>" id="avatar2" src="<%=Data.foto_profil%>" />
+										</span>
+
+										<div class="space space-4"></div>
+
+										<button href="#my-modal" class="btn btn-sm btn-block btn-success" data-toggle="modal">
+											<i class="ace-icon fa fa-plus-circle bigger-120"></i>
+											<span class="bigger-110">Ganti Foto Profil</span>
+										</button>
+
+										<div id="my-modal" class="modal fade" tabindex="-1">
+											<div class="modal-dialog">
+												<div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+														<h3 class="smaller lighter blue no-margin">Upload Foto Profil</h3>
+													</div>
+
+													<div class="modal-body">
+														<form action="/upload" method="post" enctype="multipart/form-data">
+															<div class="row">
+																<div class="col-xs-2 col-sm-2"></div>
+																<div class="col-xs-8 col-sm-8">
+																	<input name="profil" type="file" id="foto-profil" accept="image/*" onchange="loadFile(event)" />
+																</div>
+																<div class="col-xs-2 col-sm-2"></div>
+															</div>
+
+															<div class="row">
+																<div class="col-xs-12 col-sm-12">
+																	<div class="well">
+																		<img id="preview" height="100%" width="100%" />
+																	</div>
+																</div>
+															</div>
+
+															<div class="row">
+																<div class="col-xs-12 col-sm-12">
+																	<button type="submit" class="width-35 btn btn-sm btn-primary">
+																		<i class="ace-icon fa fa-cloud-upload"></i>
+																		<span class="bigger-110">Upload</span>
+																	</button>
+																</div>
+															</div>
+
+														</form>
+													</div>
+
+													<div class="modal-footer">
+														<button class="btn btn-sm btn-danger pull-right" data-dismiss="modal">
+															<i class="ace-icon fa fa-times"></i>
+															Close
+														</button>
+													</div>
+												</div><!-- /.modal-content -->
+											</div><!-- /.modal-dialog -->
+										</div>
+									</div><!-- /.col -->
+
+									<div class="col-xs-12 col-sm-9">
+										<h4 class="blue">
+											<span class="middle"><%=Data.nama.depan%> <%=Data.nama.belakang%></span>
+											<a href="/edit/profil">
+												<button class="btn btn-minier btn-primary">
+													<i class="ace-icon fa fa-circle smaller-80 align-middle"></i>
+														Edit Profil
+												</button>
+											</a>
+											<a href="/edit/password">
+												<button class="btn btn-minier btn-danger">
+													<i class="ace-icon fa fa-circle smaller-80 align-middle"></i>
+														Ubah Password
+												</button>
+											</a>
+										</h4>
+
+										<div class="profile-user-info">
+
+											<div class="profile-info-row">
+												<div class="profile-info-name"> Nama Depan </div>
+
+												<div class="profile-info-value">
+													<span><%=Data.nama.depan%></span>
+												</div>
+											</div>
+
+											<div class="profile-info-row">
+												<div class="profile-info-name"> Nama Belakang </div>
+
+												<div class="profile-info-value">
+													<span><%=Data.nama.belakang%></span>
+												</div>
+											</div>
+
+											<div class="profile-info-row">
+												<div class="profile-info-name"> Email </div>
+
+												<div class="profile-info-value">
+													<span><%=Data.email%></span>
+												</div>
+											</div>
+
+											<div class="profile-info-row">
+												<div class="profile-info-name"> Tempat, Tanggal Lahir </div>
+
+												<div class="profile-info-value">
+													<i class="fa fa-map-marker light-orange bigger-110"></i>
+													<span><%=Data.ttl.t%></span>
+													<span><%=moment(Data.ttl.tl).format('DD MMMM YYYY')%></span>
+												</div>
+											</div>
+
+											<div class="profile-info-row">
+												<div class="profile-info-name"> Jenis Kelamin </div>
+
+												<div class="profile-info-value">
+													<span><%=Data.gender%></span>
+												</div>
+											</div>
+
+											<div class="profile-info-row">
+												<div class="profile-info-name"> Alamat </div>
+
+												<div class="profile-info-value">
+													<span><%=Data.alamat%></span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div><!-- /.row -->
+
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div>
+			</div><!-- /.main-content -->
+
+			<%- include('layout/footer') %>
+		</div><!-- /.main-container -->
+
+		<%- include('layout/js') %>
+
+		<script type="text/javascript">
+
+
+			var loadFile = function(event) {
+				if (window.File && window.FileReader && window.FileList && window.Blob) {
+					var reader = new FileReader();
+					reader.onload = function(){
+						var output = document.getElementById('preview');
+						output.src = reader.result;
+					};
+					reader.readAsDataURL(event.target.files[0]);
+				} else {
+					alert('The File APIs are not fully supported in this browser.');
+				}
+			};
+
+			jQuery(function($) {
+				$('#foto-profil').ace_file_input({
+					no_file:'Tidak Ada Gambar ...',
+					btn_choose:'Pilih',
+					btn_change:'Ubah',
+					droppable:false,
+					onchange:null,
+					thumbnail:false, //| true | large
+					whitelist:'gif|png|jpg|jpeg',
+					blacklist:'exe|php',
+				});
+			});
+		</script>
+	</body>
+</html>
