@@ -12,6 +12,7 @@ var methodOverride = require('method-override');
 
 var index = require('./routes/index');
 var admin = require('./routes/admin');
+var gambar = require('./routes/gambar');
 
 var app = express();
 
@@ -43,6 +44,7 @@ app.use(methodOverride( function(req, res) {
 
 app.use('/', index);
 app.use('/admin', admin);
+app.use('/gambar', gambar);
 
 // Mongoose Configuration
 mongoose.Promise = global.Promise;

@@ -20,4 +20,6 @@ atau
 ```
 $ nodemon start
 ```
-jika sudah menginstall nodemon
+jika sudah menginstall nodemon.
+
+Running at http://localhost:3000.
