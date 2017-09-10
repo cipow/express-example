@@ -10,7 +10,9 @@ $ git clone https://github.com/cipow/express-example.git
 $ cd express-example
 $ npm install
 ```
-Hidupkan MongoDB
+Hidupkan MongoDB terlebih dahulu,
+
+Kemudian cara menjalankan
 ```
 $ node start
 ```
