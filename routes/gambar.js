@@ -9,4 +9,12 @@ router.get('/', Auth.is_login, Auth.is_anggota, function(req, res, next) {
   res.render('gambar/index');
 });
 
+router.route('/upload')
+  .get(Auth.is_login, Auth.is_anggota, function(req, res, next) {
+    res.render('gambar/add');
+  })
+  .post(Auth.is_login, Auth.is_anggota, function(req, res, next) {
+
+  });
+
 module.exports = router;
