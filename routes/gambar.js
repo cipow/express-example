@@ -65,4 +65,15 @@ router.route('/(:id)')
     });
   });
 
+router.get('/(:id)/preview', Auth.is_login, Auth.is_anggota, function(req, res, next) {
+  gambar.findById(req.params.id, function(err, result) {
+    if(!err) {
+      res.render('gambar/preview', {
+        data: result,
+      });
+    }
+  });
+
+});
+
 module.exports = router;
