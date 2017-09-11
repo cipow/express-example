@@ -12,7 +12,7 @@ router.get('/', Auth.is_login, Auth.is_anggota, function(req, res, next) {
         data: result,
       });
     }
-  }).select('nama');
+  }).select('nama judul');
 });
 
 router.route('/upload')
@@ -46,6 +46,21 @@ router.route('/upload')
           }
         });
       }
+    });
+  });
+
+router.route('/(:id)')
+  .delete(Auth.is_login, Auth.is_anggota, function(req, res, next) {
+    gambar.findById(req.params.id, function(err, result) {
+      result.remove(function(err) {
+        if(!err) {
+          fs.unlink('./public'+result.nama, function(err) {
+            if(!err) {
+              res.redirect('/gambar');
+            }
+          });
+        }
+      });
     });
   });
 

@@ -48,7 +48,7 @@
 													<img width="200" height="200" alt="200x200" src="<%=file.nama%>" />
 													<div class="text">
 														<div class="inner">
-															<span>Some Title!</span>
+															<span><%=file.judul%></span>
 
 															<br />
 															<a href="<%=file.nama%>" data-rel="colorbox">
@@ -56,12 +56,18 @@
 															</a>
 
 															<a href="#">
-																<i class="ace-icon fa fa-user"></i>
+																<i class="ace-icon fa fa-pencil"></i>
 															</a>
 
-															<a href="#">
-																<i class="ace-icon fa fa-share"></i>
+															<a href="/gambar/<%=file._id%>" onclick="
+																event.preventDefault();
+                          			document.getElementById('delete').submit();">
+																<i class="ace-icon fa fa-remove"></i>
 															</a>
+
+															<form id="delete" action="/gambar/<%=file._id%>" method="post" style="display: none;">
+																<input type="hidden" name="_method" value="DELETE">
+															</form>
 														</div>
 													</div>
 												</div>
