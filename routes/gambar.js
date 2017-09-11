@@ -51,6 +51,28 @@ router.route('/upload')
   });
 
 router.route('/(:id)')
+  .get(Auth.is_login, Auth.is_anggota, function(req, res, next) {
+    gambar.findById(req.params.id, function(err, result) {
+      if(!err) {
+        res.render('gambar/edit', {
+          data: result,
+        });
+      }
+    });
+  })
+  .put(Auth.is_login, Auth.is_anggota, function(req, res, next) {
+    gambar.findById(req.params.id, function(err, result) {
+      if(!err) {
+        result.judul = req.body.judul;
+        result.keterangan = req.body.keterangan;
+        result.save(function(err) {
+          if(!err) {
+            res.redirect('/gambar/'+req.params.id+'/preview');
+          }
+        });
+      }
+    });
+  })
   .delete(Auth.is_login, Auth.is_anggota, function(req, res, next) {
     gambar.findById(req.params.id, function(err, result) {
       result.remove(function(err) {
