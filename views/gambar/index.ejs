@@ -42,102 +42,31 @@
 								<!-- PAGE CONTENT BEGINS -->
 								<div>
 									<ul class="ace-thumbnails clearfix">
-										<li>
-											<div>
-												<img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-5.jpg" />
-												<div class="text">
-													<div class="inner">
-														<span>Some Title!</span>
+										<% data.forEach(function(file){ %>
+											<li>
+												<div>
+													<img width="200" height="200" alt="200x200" src="<%=file.nama%>" />
+													<div class="text">
+														<div class="inner">
+															<span>Some Title!</span>
 
-														<br />
-														<a href="assets/images/gallery/image-5.jpg" data-rel="colorbox">
-															<i class="ace-icon fa fa-search-plus"></i>
-														</a>
+															<br />
+															<a href="<%=file.nama%>" data-rel="colorbox">
+																<i class="ace-icon fa fa-search-plus"></i>
+															</a>
 
-														<a href="#">
-															<i class="ace-icon fa fa-user"></i>
-														</a>
+															<a href="#">
+																<i class="ace-icon fa fa-user"></i>
+															</a>
 
-														<a href="#">
-															<i class="ace-icon fa fa-share"></i>
-														</a>
+															<a href="#">
+																<i class="ace-icon fa fa-share"></i>
+															</a>
+														</div>
 													</div>
 												</div>
-											</div>
-										</li>
-
-										<li>
-											<div>
-												<img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-5.jpg" />
-												<div class="text">
-													<div class="inner">
-														<span>Some Title!</span>
-
-														<br />
-														<a href="assets/images/gallery/image-5.jpg" data-rel="colorbox">
-															<i class="ace-icon fa fa-search-plus"></i>
-														</a>
-
-														<a href="#">
-															<i class="ace-icon fa fa-user"></i>
-														</a>
-
-														<a href="#">
-															<i class="ace-icon fa fa-share"></i>
-														</a>
-													</div>
-												</div>
-											</div>
-										</li>
-
-										<li>
-											<div>
-												<img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-5.jpg" />
-												<div class="text">
-													<div class="inner">
-														<span>Some Title!</span>
-
-														<br />
-														<a href="assets/images/gallery/image-5.jpg" data-rel="colorbox">
-															<i class="ace-icon fa fa-search-plus"></i>
-														</a>
-
-														<a href="#">
-															<i class="ace-icon fa fa-user"></i>
-														</a>
-
-														<a href="#">
-															<i class="ace-icon fa fa-share"></i>
-														</a>
-													</div>
-												</div>
-											</div>
-										</li>
-
-										<li>
-											<div>
-												<img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-5.jpg" />
-												<div class="text">
-													<div class="inner">
-														<span>Some Title!</span>
-
-														<br />
-														<a href="assets/images/gallery/image-5.jpg" data-rel="colorbox">
-															<i class="ace-icon fa fa-search-plus"></i>
-														</a>
-
-														<a href="#">
-															<i class="ace-icon fa fa-user"></i>
-														</a>
-
-														<a href="#">
-															<i class="ace-icon fa fa-share"></i>
-														</a>
-													</div>
-												</div>
-											</div>
-										</li>
-
+											</li>
+										<% }) %>
 									</ul>
 								</div>
 								<!-- PAGE CONTENT ENDS -->
