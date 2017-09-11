@@ -9,6 +9,7 @@ router.get('/', Auth.is_login, Auth.is_anggota, function(req, res, next) {
   gambar.find({upload_by: req.session.name}, function(err, result) {
     if(!err) {
       res.render('gambar/index', {
+        username: req.session.name,
         data: result,
       });
     }
