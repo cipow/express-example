@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta charset="utf-8" />
+		<title>Profil | Preview</title>
+
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+		<%- include('../layout/css') %>
+	</head>
+
+	<body class="no-skin">
+		<%- include('../layout/navbar') %>
+
+		<div class="main-container ace-save-state" id="main-container">
+			<%- include('../layout/sidebar') %>
+
+			<div class="main-content">
+				<div class="main-content-inner">
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li class="active">
+								<i class="ace-icon fa fa-eye home-icon"></i>
+								Preview Detail
+							</li>
+						</ul><!-- /.breadcrumb -->
+					</div>
+
+					<div class="page-content">
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+
+								<div class="row">
+									<form action="/gambar/<%=data._id%>" method="post">
+										<input type="hidden" name="_method" value="PUT">
+										<div class="col-xs-12 col-sm-3 center">
+											<span class="profile-picture">
+												<img class="img-responsive" src="<%=data.nama%>" />
+											</span>
+
+											<div class="space space-4"></div>
+
+											<button type="submit" class="btn btn-sm btn-block btn-success">
+												<span class="bigger-110">Update</span>
+											</button>
+
+										</div><!-- /.col -->
+
+										<div class="col-xs-12 col-sm-9">
+
+											<div class="profile-user-info">
+
+												<div class="profile-info-row">
+													<div class="profile-info-name"> Judul </div>
+
+													<div class="profile-info-value">
+														<span><input type="text" name="judul" value="<%=data.judul%>"></span>
+													</div>
+												</div>
+
+											</div>
+
+											<div class="profile-user-info">
+
+												<div class="profile-info-row">
+													<div class="profile-info-name"> Keterangan </div>
+
+													<div class="profile-info-value">
+														<span><textarea name="keterangan" class="form-control" rows="6" placeholder="Alamat"><%=data.keterangan%></textarea></span>
+													</div>
+												</div>
+
+											</div>
+
+										</div>
+									</form>
+
+								</div><!-- /.row -->
+
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div>
+			</div><!-- /.main-content -->
+
+			<%- include('../layout/footer') %>
+		</div><!-- /.main-container -->
+
+		<%- include('../layout/js') %>
+	</body>
+</html>

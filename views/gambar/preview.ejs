@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Ace Admin</title>
+		<title>Profil | Preview</title>
 
 		<meta name="description" content="" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -14,15 +14,15 @@
 		<%- include('../layout/navbar') %>
 
 		<div class="main-container ace-save-state" id="main-container">
-			<%- include('../layout/admin/sidebar') %>
+			<%- include('../layout/sidebar') %>
 
 			<div class="main-content">
 				<div class="main-content-inner">
 					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
 						<ul class="breadcrumb">
 							<li class="active">
-								<i class="ace-icon fa fa-home home-icon"></i>
-								Dashboard
+								<i class="ace-icon fa fa-eye home-icon"></i>
+								Preview Detail
 							</li>
 						</ul><!-- /.breadcrumb -->
 					</div>
@@ -33,35 +33,47 @@
 								<!-- PAGE CONTENT BEGINS -->
 
 								<div class="row">
-									<div class="col-sm-12">
-										<div class="widget-box">
+									<div class="col-xs-12 col-sm-3 center">
+										<span class="profile-picture">
+											<img class="img-responsive" src="<%=data.nama%>" />
+										</span>
 
-											<div class="widget-header widget-header-flat">
-												<h3 class="widget-title">Selamat Datang <%=name%></h3>
-											</div>
+										<div class="space space-4"></div>
 
-											<div class="widget-body">
-												<div class="widget-main">
+										<a href="/gambar/<%=data._id%>" class="btn btn-sm btn-block btn-success">
+											<span class="bigger-110">Ubah Informasi</span>
+										</a>
 
-													<div class="row">
-														<div class="col-sm-12">
-															<p class="lead">
-																Ini merupakan contoh CRUD menggunakan Node.js <br>
-																Dengan framework Express dan MongoDB sebagai Databasenya.
+									</div><!-- /.col -->
 
-																<br> <br>
+									<div class="col-xs-12 col-sm-9">
 
-																Silahkan anda pelajari source code yang sudah anda unduh. <br>
-																Terima Kasih :)
-															</p>
-														</div>
-													</div>
+										<div class="profile-user-info">
 
+											<div class="profile-info-row">
+												<div class="profile-info-name"> Judul </div>
+
+												<div class="profile-info-value">
+													<span><%=data.judul%></span>
 												</div>
 											</div>
-										</div> <!-- /.widget -->
+
+										</div>
+
+										<div class="profile-user-info">
+
+											<div class="profile-info-row">
+												<div class="profile-info-name"> Keterangan </div>
+
+												<div class="profile-info-value">
+													<span><%=data.keterangan%></span>
+												</div>
+											</div>
+
+										</div>
+
 									</div>
-								</div> <!--  /.row -->
+								</div><!-- /.row -->
 
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->

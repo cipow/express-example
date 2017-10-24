@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta charset="utf-8" />
+		<title>Profil | Gambar | <%=username%></title>
+
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+		<link rel="stylesheet" href="/assets/css/colorbox.min.css" />
+		<%- include('../layout/css') %>
+	</head>
+
+	<body class="no-skin">
+		<%- include('../layout/navbar') %>
+
+		<div class="main-container ace-save-state" id="main-container">
+			<%- include('../layout/sidebar') %>
+
+			<div class="main-content">
+				<div class="main-content-inner">
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li class="active">
+								<i class="ace-icon fa fa-picture-o"></i>
+								Gambar
+							</li>
+						</ul><!-- /.breadcrumb -->
+					</div>
+
+					<div class="page-header">
+						<h1>
+							<a href="/gambar/upload" class="btn btn-primary">
+								Upload Gambar
+							</a>
+						</h1>
+					</div><!-- /.page-header -->
+
+					<div class="page-content">
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+								<div>
+									<ul class="ace-thumbnails clearfix">
+										<% data.forEach(function(file){ %>
+											<li>
+												<div>
+													<img width="200" height="200" alt="200x200" src="<%=file.nama%>" />
+													<div class="text">
+														<div class="inner">
+															<span><%=file.judul%></span>
+
+															<br />
+															<a href="<%=file.nama%>" data-rel="colorbox">
+																<i class="ace-icon fa fa-search-plus"></i>
+															</a>
+
+															<a href="/gambar/<%=file._id%>/preview">
+																<i class="ace-icon fa fa-eye"></i>
+															</a>
+
+															<a href="/gambar/<%=file._id%>" onclick="
+																event.preventDefault();
+                          			document.getElementById('delete').submit();">
+																<i class="ace-icon fa fa-remove"></i>
+															</a>
+
+															<form id="delete" action="/gambar/<%=file._id%>" method="post" style="display: none;">
+																<input type="hidden" name="_method" value="DELETE">
+															</form>
+														</div>
+													</div>
+												</div>
+											</li>
+										<% }) %>
+									</ul>
+								</div>
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div>
+			</div><!-- /.main-content -->
+
+			<%- include('../layout/footer') %>
+		</div><!-- /.main-container -->
+
+		<%- include('../layout/js') %>
+		<script src="/assets/js/jquery.colorbox.min.js"></script>
+		<script type="text/javascript">
+		jQuery(function($) {
+			var $overflow = '';
+			var colorbox_params = {
+				rel: 'colorbox',
+				reposition:true,
+				scalePhotos:true,
+				scrolling:false,
+				previous:'<i class="ace-icon fa fa-arrow-left"></i>',
+				next:'<i class="ace-icon fa fa-arrow-right"></i>',
+				close:'&times;',
+				current:'{current} of {total}',
+				maxWidth:'100%',
+				maxHeight:'100%',
+				onOpen:function(){
+					$overflow = document.body.style.overflow;
+					document.body.style.overflow = 'hidden';
+				},
+				onClosed:function(){
+					document.body.style.overflow = $overflow;
+				},
+				onComplete:function(){
+					$.colorbox.resize();
+				}
+			};
+
+			$('.ace-thumbnails [data-rel="colorbox"]').colorbox(colorbox_params);
+			$("#cboxLoadingGraphic").html("<i class='ace-icon fa fa-spinner orange fa-spin'></i>");//let's add a custom loading icon
+
+
+			$(document).one('ajaxloadstart.page', function(e) {
+				$('#colorbox, #cboxOverlay').remove();
+			 });
+			})
+		</script>
+	</body>
+</html>
